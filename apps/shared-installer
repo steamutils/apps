@@ -12,7 +12,7 @@ podman run -it --name steamcmd-appinstaller-$STEAMCMD_APPID \
 	-e STEAMCMD_APP_BRANCH=-$STEAMCMD_APP_BRANCH \
 	-v steamapp-$STEAMCMD_APPID:/steamapp:z \
 	quay.io/steamutils/steamcmd:latest \
-	+@sSteamCmdForcePlatformType windows +force_install_dir /app +login anonymous +app_update $STEAMCMD_APPID -$STEAMCMD_BRANCH validate +quit
+	+@sSteamCmdForcePlatformType windows +force_install_dir /steamapp +login anonymous +app_update $STEAMCMD_APPID -$STEAMCMD_BRANCH validate +quit
 
 # Remove leftover container
 podman rm -f steamcmd-appinstaller-$STEAMCMD_APPID
