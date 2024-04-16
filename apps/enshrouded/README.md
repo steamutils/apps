@@ -6,9 +6,9 @@ Ready-made materials are located in `scripts` if you prefer docker/podman method
 
 ## Guides
 
-### [Podman Kube Play (Recommended)](manifests/README.md)
+### [Podman Kube Play (Recommended)](manifests/)
 - `manifests/`
-### [Docker/Podman Run](scripts/README.md)
+### [Docker/Podman Run](scripts/)
 - `scripts/`
 
 ---
