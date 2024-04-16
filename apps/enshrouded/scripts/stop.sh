@@ -1,3 +1,4 @@
 #!/bin/bash
 source ./.enshrouded
-podman kill -s SIGINT $APP_NAME
+echo "$(podman kill -s SIGINT $APP_NAME) stopped."
+echo "$(podman rm -f $APP_NAME) removed."
