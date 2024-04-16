@@ -36,5 +36,5 @@ spec:
           claimName: proton-2278520
       - name: config
         hostPath:
-          path: ../enshrouded_server.json
+          path: ./enshrouded_server.json
           type: File
