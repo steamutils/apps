@@ -10,7 +10,10 @@ spec:
       containers:
       - name: enshrouded
         image: quay.io/steamutils/proton-runner:latest
-        args: ["/steamapp/enshrouded_server.exe"]
+        args: ["enshrouded_server.exe"]
+        env:
+        - name: STEAMCMD_ARGS
+          value: '+@sSteamCmdForcePlatformType windows +force_install_dir /steamapp +login anonymous +app_update 2278520 -public validate +quit'
         volumeMounts:
         - mountPath: /steamapp
           name: steamapp
@@ -21,7 +24,7 @@ spec:
         ports:
         - name: app-udp
           containerPort: 15636
-          hostPort: 15626
+          hostPort: 15636
           protocol: UDP
         - name: query-udp
           containerPort: 15637
