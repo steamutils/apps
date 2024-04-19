@@ -4,8 +4,8 @@ serverName: 'Enshrouded Server'
 serverPassword: ''
 serverLogDirectory: './logs'
 serverSaveDirectory: './savegame'
-serverGamePort: 15636
-serverQueryPort: 15637
+serverGamePort: 30000
+serverQueryPort: 30001
 serverSlotCount: 16
 
 importedSave:
