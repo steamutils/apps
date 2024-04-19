@@ -10,7 +10,7 @@ Configure your server at `enshrouded_server.json`.
 Run the deployment of the dedicated server
 
 ```
-podman kube play run.yaml
+podman kube play deployment.yaml
 ```
 
 Verify it's running by tailing the logs
