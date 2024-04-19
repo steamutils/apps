@@ -1,0 +1,13 @@
+# Default values for enshrouded-dedicated-server.
+# This is a YAML-formatted file.
+serverName: 'Enshrouded Server'
+serverPassword: ''
+serverLogDirectory: './logs'
+serverSaveDirectory: './savegame'
+serverGamePort: 15636
+serverQueryPort: 15637
+serverSlotCount: 16
+
+importedSave:
+  pvcName: imported-savegame
+  enabled: false
