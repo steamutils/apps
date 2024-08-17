@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# Installer Vars
-export STEAMCMD_APPID=2278520
-export STEAMCMD_APP_BRANCH=public
-
-# Runtime Vars
-export APP_NAME=enshrouded-dedicated-server
-export EXECUTABLE_PATH=enshrouded_server.exe

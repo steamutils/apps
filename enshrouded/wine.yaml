@@ -2,23 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: enshrouded-dedicated-server
+  name: enshrouded
 spec:
   replicas: 1
   template:
     spec:
       containers:
       - name: enshrouded
-        image: quay.io/steamutils/proton-runner:latest
+        image: quay.io/steamutils/runner:latest
         args: ["enshrouded_server.exe"]
         env:
         - name: STEAMCMD_ARGS
           value: '+@sSteamCmdForcePlatformType windows +force_install_dir /steamapp +login anonymous +app_update 2278520 -public validate +quit'
+        - name: WINE_ONLY
+          value: true
         volumeMounts:
         - mountPath: /steamapp:z
           name: steamapp
-        - mountPath: /proton:z
-          name: proton
         - mountPath: /steamapp/enshrouded_server.json:z
           name: config
         ports:
@@ -30,9 +30,6 @@ spec:
       - name: steamapp
         persistentVolumeClaim:
           claimName: steamapp-2278520
-      - name: proton
-        persistentVolumeClaim:
-          claimName: proton-2278520
       - name: config
         hostPath:
           path: ./enshrouded_server.json
