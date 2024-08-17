@@ -4,4 +4,4 @@ Example configurations of windows compatibility apps running on linux with Proto
 ## Applications
 
 ### E
-#### [Enshrouded Dedicated Server](/enshrouded)
+#### [Enshrouded Dedicated Server](/apps/enshrouded)
