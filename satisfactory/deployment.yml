@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: satisfactory
+  labels:
+    app: satisfactory
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      hostNetwork: true
+      restartPolicy: Always
+      containers:
+      - name: factoryserver
+        image: quay.io/steamutils/steamcmd:latest
+        args: ["FactoryServer.sh", "-log","-unattended","ServerQueryPort=15777","-BeaconPort=15000","Port=7777"]
+        env:
+        - name: STEAMCMD_ARGS
+          value: '+force_install_dir /steamapp +login anonymous +app_update 1690800 -beta public validate +quit'
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /steamapp
+          name: satisfactory
+        - mountPath: /home/steamcmd/.config/Epic
+          name: satisfactory-saves
+      volumes:
+      - name: satisfactory
+        persistentVolumeClaim:
+          claimName: satisfactory
+      - name: satisfactory-saves
+        persistentVolumeClaim:
+          claimName: satisfactory-data

@@ -1,0 +1,13 @@
+[Unit]
+Description=satisfactory
+After=default.target
+
+[Kube]
+Yaml=/opt/satisfactory/deployment.yaml
+AutoUpdate=Registry
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
