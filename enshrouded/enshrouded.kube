@@ -1,0 +1,13 @@
+[Unit]
+Description=enshrouded
+After=default.target
+
+[Kube]
+Yaml=enshrouded/deployment.yaml
+AutoUpdate=Registry
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

@@ -18,19 +18,22 @@ spec:
           value: true
         volumeMounts:
         - mountPath: /steamapp:z
-          name: steamapp
-        - mountPath: /steamapp/enshrouded_server.json:z
-          name: config
+          name: enshrouded-app
+        - mountPath: /steamapp/savegame:z
+          name: enshrouded-data
         ports:
         - name: query-udp
           containerPort: 15637
           hostPort: 15637
           protocol: UDP
       volumes:
-      - name: steamapp
+      - name: enshrouded-app
         persistentVolumeClaim:
-          claimName: steamapp-2278520
-      - name: config
+          claimName: enshrouded-app
+      - name: enshrouded-data
+        persistentVolumeClaim:
+          claimName: enshrouded-data
+      - name: enshrouded-config
         hostPath:
-          path: ./enshrouded_server.json
+          path: enshrouded/enshrouded_server.json
           type: File
