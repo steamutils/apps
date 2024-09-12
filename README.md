@@ -1,7 +1,11 @@
 # apps
-Example configurations of windows compatibility apps running on linux with Proton
+
+containerized steam apps
 
 ## Applications
 
 ### E
-#### [Enshrouded Dedicated Server](enshrouded)
+- [Enshrouded Dedicated Server](enshrouded)
+
+### S
+- [Satisfactory Dedicated Server](satisfactory)
