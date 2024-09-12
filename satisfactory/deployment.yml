@@ -11,7 +11,6 @@ spec:
     type: Recreate
   template:
     spec:
-      hostNetwork: true
       restartPolicy: Always
       containers:
       - name: factoryserver
@@ -25,11 +24,24 @@ spec:
         - mountPath: /steamapp
           name: satisfactory
         - mountPath: /home/steamcmd/.config/Epic
-          name: satisfactory-saves
-      volumes:
+          name: satisfactory-data
+        ports:
+        - name: port
+          containerPort: 7777
+          hostPort: 7777 
+          protocol: udp
+        - name: beaconport
+          containerPort: 15000
+          hostPort: 15000
+          protocol: udp
+        - name: serverqueryport
+          containerPort: 15777
+          hostPort: 15777
+          protocol: udp
+      volumes:       
       - name: satisfactory
         persistentVolumeClaim:
-          claimName: satisfactory
-      - name: satisfactory-saves
+          claimName: satisfactory-app
+      - name: satisfactory-data
         persistentVolumeClaim:
           claimName: satisfactory-data
