@@ -2,5 +2,5 @@
 
 Quick Start
 ```bash
-sh -c "$(curl -sLOJ https://raw.githubusercontent.com/steamutils/apps/main/satisfactory/setup.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/steamutils/apps/main/satisfactory/setup.sh)"
 ```
