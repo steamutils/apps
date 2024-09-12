@@ -3,7 +3,7 @@ Description=satisfactory
 After=default.target
 
 [Kube]
-Yaml=/opt/satisfactory/deployment.yaml
+Yaml=$HOME/.games/satisfactory/deployment.yaml
 AutoUpdate=Registry
 
 [Service]
