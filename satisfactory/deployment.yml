@@ -26,6 +26,10 @@ spec:
         - mountPath: /home/steamcmd/.config/Epic
           name: satisfactory-data
         ports:
+        - name: api
+          containerPort: 7777
+          hostPort: 7777 
+          protocol: tcp
         - name: port
           containerPort: 7777
           hostPort: 7777 
