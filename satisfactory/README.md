@@ -1,6 +1,13 @@
 # Satisfactory Dedicated Server
 
-Quick Start
+## Requirements
+
+- [podman](https://podman.io/docs/installation)
+- systemd
+- podman quadlet (included in podman 4.4+)
+
+> **_NOTE:_** These containers run in unprivileged/rootless podman. If you are on a distro that does not configure this out of the box (such as Arch/Manjaro) follow the podman installation docs for more information on setting up [rootless podman](https://github.com/containers/podman/blob/main/README.md#rootless)
+## Quick Start
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/steamutils/apps/main/satisfactory/setup.sh)"
 ```
