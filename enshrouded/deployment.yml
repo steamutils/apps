@@ -1,4 +1,65 @@
 ---
+apiVersion: v1
+data:
+  enshrouded_server.json: |
+    {
+        "name": "Enshrouded Server",
+        "saveDirectory": "./savegame",
+        "logDirectory": "./logs",
+        "ip": "0.0.0.0",
+        "queryPort": 15637,
+        "slotCount": 16,
+        "gameSettingsPreset": "Default",
+        "gameSettings": {
+                "playerHealthFactor": 1,
+                "playerManaFactor": 1,
+                "playerStaminaFactor": 1,
+                "enableDurability": true,
+                "enableStarvingDebuff": false,
+                "foodBuffDurationFactor": 1,
+                "fromHungerToStarving": 600000000000,
+                "shroudTimeFactor": 1,
+                "tombstoneMode": "AddBackpackMaterials",
+                "miningDamageFactor": 1,
+                "plantGrowthSpeedFactor": 1,
+                "resourceDropStackAmountFactor": 1,
+                "factoryProductionSpeedFactor": 1,
+                "perkUpgradeRecyclingFactor": 0.500000,
+                "perkCostFactor": 1,
+                "experienceCombatFactor": 1,
+                "experienceMiningFactor": 1,
+                "experienceExplorationQuestsFactor": 1,
+                "randomSpawnerAmount": "Normal",
+                "aggroPoolAmount": "Normal",
+                "enemyDamageFactor": 1,
+                "enemyHealthFactor": 1,
+                "enemyStaminaFactor": 1,
+                "enemyPerceptionRangeFactor": 1,
+                "bossDamageFactor": 1,
+                "bossHealthFactor": 1,
+                "threatBonus": 1,
+                "pacifyAllEnemies": false,
+                "dayTimeDuration": 1800000000000,
+                "nightTimeDuration": 720000000000
+        },
+        "userGroups": [
+                {
+                        "name": "Default",
+                        "password": "password",
+                        "canKickBan": false,
+                        "canAccessInventories": true,
+                        "canEditBase": true,
+                        "canExtendBase": true,
+                        "reservedSlots": 0
+                }
+        ]
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: enshrouded-server-config
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -21,6 +82,9 @@ spec:
           name: enshrouded-app
         - mountPath: /steamapp/savegame:z
           name: enshrouded-data
+        - mountPath: /steamapp/enshrouded_server.json:z
+          name: enshrouded-server-config
+          subPath: enshrouded_server.json
         ports:
         - name: query-udp
           containerPort: 15637
@@ -33,7 +97,6 @@ spec:
       - name: enshrouded-data
         persistentVolumeClaim:
           claimName: enshrouded-data
-      - name: enshrouded-config
-        hostPath:
-          path: enshrouded/enshrouded_server.json
-          type: File
+      - name: enshrouded-server-config
+        persistentVolumeClaim:
+          claimName: enshrouded-server-config
