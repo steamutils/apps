@@ -15,4 +15,4 @@ sudo loginctl enable-linger
 echo "Wait for pod to run..."
 sleep 5
 
-echo "\nPod running. Check process logs with: \n\npodman logs -f satisfactory-pod-factoryserver"
+echo -e "\nPod running. Check process logs with: \n\npodman logs -f satisfactory-pod-factoryserver"
